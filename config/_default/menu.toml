@@ -1,6 +1,6 @@
 [[main]]
 identifier = 'home'
-name = 'Home'
+name = '首页'
 pre = "<i class='icon icon-home'></i>"
 url = '/'
 weight = 1
