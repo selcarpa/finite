@@ -1,0 +1,12 @@
+title = 'Docura'
+baseURL = 'https://docura.github.io/'
+
+defaultContentLanguage = 'zh'
+languageCode = 'zh-cn'
+
+googleAnalytics = ''
+
+enableGitInfo = true
+
+markup.highlight.noClasses = false
+theme = 'docura'
