@@ -2,7 +2,7 @@ title = '今日无新鲜事'
 baseURL = 'https://docura.github.io/'
 
 defaultContentLanguage = 'zh'
-languageCode = 'zh-cn'
+languageCode = 'zh-Hans'
 
 googleAnalytics = ''
 
