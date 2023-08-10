@@ -204,7 +204,13 @@ override fun channelRead(originCTX: ChannelHandlerContext, msg: Any) {
 }
 ```
 
+### 连接至目标服务器
+
+收到来自客户端的代理请求（http代理、socks代理）后，需要连接至目标服务器，以socks5代理为例，从上述的socks5代理为例，在认证流程走完之后，，以下是一个简单
+
 ### 中继器实现
+
+在中继器实现中，会将从客户端收到的包转发至与目标服务器的连接中。
 
 ```kotlin
 class RelayInboundHandler(private val relayChannel: Channel, private val inActiveCallBack: () -> Unit = {}) :
@@ -213,12 +219,7 @@ class RelayInboundHandler(private val relayChannel: Channel, private val inActiv
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
         if (relayChannel.isActive) {
             relayChannel.writeAndFlush(msg).addListener(ChannelFutureListener {
-                if (!it.isSuccess) {
-                    logger.error(
-                        "relay inbound write message:${msg.javaClass.name} to [${
-                            relayChannel.id().asShortText()
-                        }] failed, cause: ${it.cause().message}", it.cause()
-                    )
+                //...      
                 }
             })
         } else {
