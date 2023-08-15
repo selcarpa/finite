@@ -16,7 +16,7 @@ hasCJKLanguage = true
 # 默认每页列表显示的文章数目
 paginate = 12
 # 谷歌分析代号 [UA-XXXXXXXX-X]
-googleAnalytics = ""
+# googleAnalytics = ""
 # 版权描述，仅仅用于 SEO
 copyright = ""
 
@@ -185,11 +185,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # Gravatar 邮箱，用于优先在主页显示的头像
       gravatarEmail = ""
       # 主页显示头像的 URL
-    #   avatarURL = "/images/avatar.png"
+      avatarURL = "https://avatars.githubusercontent.com/u/25505798?v=4"
       #  主页显示的网站标题 (支持 HTML 格式)
       title = "今日无新鲜事"
       # 主页显示的网站副标题 (允许 HTML 格式)
-      subtitle = '<text style="color: gold">束缚于果壳之中，我仍自认为无限空间之王。</text>'
+      subtitle = '<text style="color: gold;font-size: x-large">束缚于果壳之中，我仍自认为无限空间之王。</text>'
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号
