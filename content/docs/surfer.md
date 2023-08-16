@@ -18,6 +18,14 @@ draft: true
 - Netty
 - Trojan
 
+## 思路
+
+netty作为Java网络编程的重要框架，可以很好的实现tcp/udp等协议的接收与发送，在本文中，将介绍如何使用netty去实现trojan协议，兼容v2fly中的tls+ws+trojan的配置方式。那么如何实现这一形式的协议的收发。
+
+在此配置中trojan协议的数据包会作为二进制数据，在websocket的二进制数据帧中进行传输，而websocket的内容会以tcp形式的包，传输在tls的连接之中，对应这部分的传输内容，我们需要实现的内容有这一些：
+
+
+
 ## 什么是Trojan
 
 [Trojan protocol](https://trojan-gfw.github.io/trojan/protocol.html)
