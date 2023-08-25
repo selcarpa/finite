@@ -2,9 +2,8 @@ name: GitHub Pages
 
 on:
   push:
-    branches:
-      - master  # Set a branch to deploy
-  pull_request:
+    tags:
+      - '*-release'  # Push events to matching v1.0.0 tags
 
 jobs:
   deploy:

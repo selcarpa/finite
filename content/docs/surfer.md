@@ -4,8 +4,6 @@ date: 2023-08-15T23:29:11+08:00
 draft: true
 ---
 
-## Introduction
-
 # 用netty实现Trojan
 
 ## 完整代码

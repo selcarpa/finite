@@ -1,7 +1,7 @@
 baseURL = "https://nnt.tain.one/"
 
 # 更改使用 Hugo 构建网站时使用的默认主题
-theme = "LoveIt"
+theme = "DoIt"
 
 # 网站标题
 title = "今日无新鲜事"
@@ -40,31 +40,31 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 [menu]
   [[menu.main]]
     weight = 1
-    identifier = "posts"
+    identifier = "docs"
     # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
     pre = ""
     # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
     post = ""
-    name = "文章"
+    name = "文档"
     url = "/docs/"
     # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
     title = ""
-  [[menu.main]]
-    weight = 2
-    identifier = "tags"
-    pre = ""
-    post = ""
-    name = "标签"
-    url = "/tags/"
-    title = ""
-  [[menu.main]]
-    weight = 3
-    identifier = "categories"
-    pre = ""
-    post = ""
-    name = "分类"
-    url = "/categories/"
-    title = ""
+  # [[menu.main]]
+  #   weight = 2
+  #   identifier = "tags"
+  #   pre = ""
+  #   post = ""
+  #   name = "标签"
+  #   url = "/tags/"
+  #   title = ""
+  # [[menu.main]]
+  #   weight = 3
+  #   identifier = "categories"
+  #   pre = ""
+  #   post = ""
+  #   name = "分类"
+  #   url = "/categories/"
+  #   title = ""
 
 [params]
   # 网站默认主题样式 ["auto", "light", "dark"]
@@ -94,7 +94,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # LOGO 的 URL
       logo = ""
       # 标题名称
-      name = ""
+      name = "今日无新鲜事"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = ""
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
@@ -187,7 +187,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # 主页显示头像的 URL
       avatarURL = "https://avatars.githubusercontent.com/u/25505798?v=4"
       #  主页显示的网站标题 (支持 HTML 格式)
-      title = "今日无新鲜事"
+      title = ""
       # 主页显示的网站副标题 (允许 HTML 格式)
       subtitle = '<text style="color: gold;font-size: x-large">束缚于果壳之中，我仍自认为无限空间之王。</text>'
       # 是否为副标题显示打字机动画
@@ -207,7 +207,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # 作者的社交信息设置
   [params.social]
-    GitHub = "github.com/selcarpa"
+    GitHub = "selcarpa"
     # Linkedin = ""
     # Twitter = "xxxx"
     # Instagram = "xxxx"
