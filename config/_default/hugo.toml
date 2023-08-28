@@ -49,28 +49,37 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     url = "/docs/"
     # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
     title = ""
-  # [[menu.main]]
-  #   weight = 2
-  #   identifier = "tags"
-  #   pre = ""
-  #   post = ""
-  #   name = "标签"
-  #   url = "/tags/"
-  #   title = ""
-  # [[menu.main]]
-  #   weight = 3
-  #   identifier = "categories"
-  #   pre = ""
-  #   post = ""
-  #   name = "分类"
-  #   url = "/categories/"
-  #   title = ""
+  [[menu.main]]
+    weight = 2
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "标签"
+    url = "/tags/"
+    title = ""
+  [[menu.main]]
+    weight = 3
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "分类"
+    url = "/categories/"
+    title = ""
+    [[menu.main]]
+    identifier = "github"
+    pre = "<i class='fab fa-github fa-fw'></i>"
+    post = ""
+    name = ""
+    url = "https://github.com/selcarpa/nnt"
+    title = "GitHub"
+    weight = 9
+
 
 [params]
   # 网站默认主题样式 ["auto", "light", "dark"]
   defaultTheme = "auto"
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
-  gitRepo = ""
+  gitRepo = "https://github.com/selcarpa/nnt"
   #  哪种哈希函数用来 SRI, 为空时表示不使用 SRI
   # ["sha256", "sha384", "sha512", "md5"]
   fingerprint = ""
@@ -189,7 +198,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       #  主页显示的网站标题 (支持 HTML 格式)
       title = ""
       # 主页显示的网站副标题 (允许 HTML 格式)
-      subtitle = '<text style="color: gold">束缚于果壳之中，我仍自认为                        无限空间之王。</text>'
+      subtitle = '<text style="color: gold">束缚于果壳之中，我仍自认为无限空间之王。</text>'
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号

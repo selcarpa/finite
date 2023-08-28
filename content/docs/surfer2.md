@@ -1,10 +1,19 @@
 ---
-title: 用netty实现Trojan（二）"
+categories:
+- docs
+title: 用Netty实现Trojan（二）"
 date: 2023-08-25T09:49:07+08:00
-draft: true
+tags:
+- Netty
+- java
+- kotlin
+- surfer
+- trojan
+- socks
+draft: false
 ---
 
-# 用netty实现Trojan（二）
+# 用Netty实现Trojan（二）
 
 本节主要是介绍如何实现一个允许tcp通过的socks代理服务器，大部分携带网络功能的客户端，如curl、wget、浏览器等，在请求的时候，可以通过环境变量或者设置的形式，使这些客户端通过代理进行请求，以下是一个简单的例子：
 
@@ -15,11 +24,11 @@ curl -v https://www.google.com # 进行一次https的请求
 
 在实现trojan协议之前，我们首先需要实现一个socks5代理服务端，用以在客户端中使用。
 
-本文目前参照netty官方的socks5实现，实现了一个socks代理服务器，由于大部分客户端都已经同时兼容socks4和socks5，此处仅实现socks5协议，socks5协议支持tcp、udp连接方式，但此处只实现了socks5的tcp代理。
+本文目前参照Netty官方的socks5实现，实现了一个socks代理服务器，由于大部分客户端都已经同时兼容socks4和socks5，此处仅实现socks5协议，socks5协议支持tcp、udp连接方式，但此处只实现了socks5的tcp代理。
 
 ## 参考
 
-- [netty/netty socks example](https://github.com/netty/netty/tree/4.1/example/src/main/java/io/netty/example/socksproxy)
+- [Netty/Netty socks example](https://github.com/Netty/Netty/tree/4.1/example/src/main/java/io/Netty/example/socksproxy)
 - [socks wiki](https://zh.wikipedia.org/wiki/SOCKS)
 
 ## 时序图
@@ -62,11 +71,11 @@ sequenceDiagram
 
 ### 初始化通道
 
-初始化通道采用netty的`SocksPortUnificationServerHandler`
+初始化通道采用Netty的`SocksPortUnificationServerHandler`
 ，在这个handler中，会将首个请求，按照socks4或者socks5的协议进行解析，解析结果`SocksMessage`
-对象。此段对应上面时序图中建立Tcp连接和发送socks5的初始化请求部分的处理。这部分都是netty内部的解码器已经实现了，这部分主要是将这部分组合起来，连同netty自身启动一起介绍。
+对象。此段对应上面时序图中建立Tcp连接和发送socks5的初始化请求部分的处理。这部分都是Netty内部的解码器已经实现了，这部分主要是将这部分组合起来，连同Netty自身启动一起介绍。
 
-#### 启动netty部分
+#### 启动Netty部分
 
 ```kotlin
 ServerBootstrap().group(bossGroup, workerGroup)
@@ -98,7 +107,7 @@ class ProxyChannelInitializer : ChannelInitializer<NioSocketChannel>() {
 
 ### socks5的认证报文处理
 
-由于socks5的认证处理部分是建议自定义的，netty仅提供了大致的结构实现，具体如何去认证，由开发者自己实现。此处，我们需要实现一个免密认证和账号密码认证。在三一部分的初始化过程中，客户端发送的tcp数据包，已经由`SocksPortUnificationServerHandler`
+由于socks5的认证处理部分是建议自定义的，Netty仅提供了大致的结构实现，具体如何去认证，由开发者自己实现。此处，我们需要实现一个免密认证和账号密码认证。在三一部分的初始化过程中，客户端发送的tcp数据包，已经由`SocksPortUnificationServerHandler`
 转化为`SocksMessage`对象，此处我们创建一个`SimpleChannelInboundHandler`的实现类，泛型指定为`SocksMessage`，用以处理socks5的认证请求。
 
 在认证请求处理完成后，代理服务前会从当前的初始化-认证处理阶段进入到命令报文的处理阶段，此时，我们需要将`SocksServerHandler`
@@ -258,7 +267,7 @@ SOCKS5请求格式：
 + DST.ADDR：目的地址，长度不定
 + DST.PORT：目的端口，2 字节
 
-关于sock5命令报文，这里需要抽出其中有用的几个信息，分别是CMD、ATYP、DST.ADDR、DST.PORT，netty内部提供的`Socks5CommandRequest`
+关于sock5命令报文，这里需要抽出其中有用的几个信息，分别是CMD、ATYP、DST.ADDR、DST.PORT，Netty内部提供的`Socks5CommandRequest`
 对象，已经将这些信息抽取出来了，我们只需要从中获取即可。
 
 此处仅探讨CMD=0x01的情况，即CONNECT命令，此命令在socks5协议中，是用来建立tcp连接的，根据Wikipedia对于socks5的介绍，在服务端收到命令报文，且CMD为0x01后，需要根据报文内容，即目标服务前的地址和端口，建立tcp连接，然后返回一个响应报文，响应报文格式如下：
@@ -297,7 +306,6 @@ class SocksServerConnectHandler(private val inbound: Inbound) : SimpleChannelInb
      */
     private fun socks5Command(originCTX: ChannelHandlerContext, message: Socks5CommandRequest) {
         //...
-                 
             resolveOutbound.ifPresent { outbound ->
                     relayAndOutbound(
                         RelayAndOutboundOp(
@@ -305,21 +313,19 @@ class SocksServerConnectHandler(private val inbound: Inbound) : SimpleChannelInb
                             outbound = outbound,
                             odor = odor
                         ).also {relayAndOutboundOp ->
-                            relayAndOutboundOp.connectEstablishedCallback = {
-                                originCTX.channel().writeAndFlush(
+                            relayAndOutboundOp.connectEstablishedCallback = { //此处采用回调的方式，当连接建立成功后，进行回调
+                                originCTX.channel().writeAndFlush( //回调的方法是向客户端发送一个连接成功的响应报文
                                     DefaultSocks5CommandResponse(
                                         Socks5CommandStatus.SUCCESS,
                                         message.dstAddrType(),
                                         message.dstAddr(),
                                         message.dstPort()
                                     )
-                                ).addListener(ChannelFutureListener {
+                                ).addListener(ChannelFutureListener { //在响应报文发送完成后，移除SocksServerConnectHandler
                                     originCTX.pipeline().remove(this@SocksServerConnectHandler)
                                 })
                             }
-                            relayAndOutboundOp.connectFail = {
-                                originCTX.close()
-                            }
+                            //...
                         }
                     )
                 }
@@ -328,3 +334,34 @@ class SocksServerConnectHandler(private val inbound: Inbound) : SimpleChannelInb
 }
 
 ```
+至此，代码就已经能成功处理socks5代理的各种报文，并且建立了到达目标服务前的tcp连接，下一步就是将客户端的请求报文转发到目标服务前，以及将目标服务前的响应报文转发到客户端。
+
+### 转发报文（中继Handler实现）
+
+中继Handler的目标是将一个channel中接收到的报文，转发至另一个channel，实现方式非常简单，我们在构造函数中，将目标channel作为参数传递至handler的实现中，当handler接收到源channel发送的报文，直接调用目标channel的write，将此handler添加到socks5来自客户端的连接和到达目标服务器的连接的最后一项即可，以下是代码实现。
+
+```kotlin
+/**
+ * relay from client channel to server
+ */
+class RelayInboundHandler(private val relayChannel: Channel, private val inActiveCallBack: () -> Unit = {}) :
+    ChannelInboundHandlerAdapter() {
+    //...
+    override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
+        if (relayChannel.isActive) {
+            //...
+            relayChannel.writeAndFlush(msg).addListener(ChannelFutureListener {
+                //...
+            })
+        } else {
+            //...
+        }
+    }
+    //...
+}
+
+```
+
+## 总结
+
+socks5的代理实现主要是需要根据socks5的报文定义，分别实现初始化报文、认证报文、命令报文的解析，以及根据命令报文的内容，建立到达目标服务前的tcp连接，然后将客户端的请求报文转发到目标服务前，将目标服务前的响应报文转发到客户端。
