@@ -1,0 +1,23 @@
+name: build-test
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v4
+        name: checkout
+
+      - name: install hugo
+        run: sudo apt install hugo
+
+      - name: Build with Hugo
+        shell: bash
+        run: hugo
