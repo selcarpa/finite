@@ -16,7 +16,7 @@ jobs:
         name: Checkout
 
       - name: Prepare environments
-        run: sudo apt install hugo -y
+        run: sudo apt update && sudo apt install hugo -y
 
       - name: Build with Hugo
         shell: bash
