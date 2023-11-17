@@ -13,11 +13,21 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
-        name: checkout
+        name: Checkout
 
-      - name: install hugo
-        run: sudo apt install hugo
+      - name: Prepare environments
+        run: sudo apt install hugo zip -y
 
       - name: Build with Hugo
         shell: bash
         run: hugo
+
+      - name: Zip the build
+        run: zip -r public.zip public
+
+      - uses: actions/upload-artifact@v3
+        name: Store the build
+        with:
+          name: public.zip
+          path: public.zip
+
