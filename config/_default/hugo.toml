@@ -69,7 +69,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     identifier = "github"
     pre = "<i class='fab fa-github fa-fw'></i>"
     post = ""
-    name = ""
     url = "https://github.com/selcarpa/nnt"
     title = "GitHub"
     weight = 9
@@ -317,7 +316,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # 是否使用目录
       enable = true
       #  是否保持使用文章前面的静态目录
-      keepStatic = true
+      keepStatic = false
       # 是否使侧边目录自动折叠展开
       auto = true
     #  代码配置
@@ -516,23 +515,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   #  网站分析配置
   [params.analytics]
-    enable = false
-    # Google Analytics
-    [params.analytics.google]
-      id = ""
-      # 是否匿名化用户 IP
-      anonymizeIP = true
-    # Fathom Analytics
-    [params.analytics.fathom]
-      id = ""
-      # 自行托管追踪器时的主机路径
-      server = ""
-    # Plausible Analytics
-    [params.analytics.plausible]
-      dataDomain = ""
-    # Yandex Metrica
-    [params.analytics.yandexMetrica]
-      id = ""
+    enable = true
+    [params.analytics.cloudflare]
+      token = "27987b0a6e2c4a19b745963e0c5250ad"
 
   #  Cookie 许可配置
   [params.cookieconsent]
