@@ -65,14 +65,21 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     name = "分类"
     url = "/categories/"
     title = ""
-    [[menu.main]]
+  [[menu.main]]
+    weight = 4
+    identifier = "static"
+    pre=""
+    post=""
+    url="https://anapla.beyond.tain.one/finite.tain.one"
+    name = "访问统计"
+    title="访问统计"
+  [[menu.main]]
     identifier = "github"
     pre = "<i class='fab fa-github fa-fw'></i>"
     post = ""
     url = "https://github.com/selcarpa/nnt"
     title = "GitHub"
     weight = 9
-
 
 [params]
   # 网站默认主题样式 ["auto", "light", "dark"]
@@ -518,6 +525,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     enable = true
     [params.analytics.cloudflare]
       token = "27987b0a6e2c4a19b745963e0c5250ad"
+    [params.analytics.plausible]
+      data_domain = "finite.tain.one"
+      src = "https://anapla.beyond.tain.one/js/script.js"
 
   #  Cookie 许可配置
   [params.cookieconsent]

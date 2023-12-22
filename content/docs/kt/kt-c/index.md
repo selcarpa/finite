@@ -4,6 +4,10 @@ categories:
 title: "kotlin-native与C/C++交互"
 date: 2023-12-06T17:38:08+08:00
 draft: false
+authors: ["selcarpa"]
+toc: 
+    enable: true
+    auto: true
 tags:
 - kotlin
 - kotlin-native
