@@ -17,20 +17,12 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Print tree
-        shell: bash
-        run: tree .
-
       - name: Prepare environments
-        run: sudo apt update -y && sudo apt install wget -y && wget https://github.com/gohugoio/hugo/releases/download/v0.120.4/hugo_0.120.4_linux-amd64.deb && sudo apt install ./hugo*.deb -y
+        run: sudo apt update -y && sudo apt install wget -y && wget https://github.com/gohugoio/hugo/releases/download/v0.121.1/hugo_extended_0.121.1_linux-amd64.deb && sudo apt install ./hugo*.deb -y
 
       - name: Build with Hugo
         shell: bash
         run: hugo
-        
-      - name: Print tree2
-        shell: bash
-        run: tree .
 
       - uses: actions/upload-artifact@v3
         name: Store the build
