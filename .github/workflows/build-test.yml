@@ -16,7 +16,7 @@ jobs:
         name: Checkout
 
       - name: Prepare environments
-        run: apt update -y && apt install wget -y && wget https://github.com/gohugoio/hugo/releases/download/v0.120.4/hugo_0.120.4_linux-amd64.deb && apt install ./hugo*.deb -y
+        run: sudo apt update -y && sudo apt install wget -y && wget https://github.com/gohugoio/hugo/releases/download/v0.120.4/hugo_0.120.4_linux-amd64.deb && sudo apt install ./hugo*.deb -y
 
       - name: Build with Hugo
         shell: bash
