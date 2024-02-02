@@ -9,12 +9,12 @@ tags:
 - tools
 ---
 
-# 背景
+## 背景
 
 - 我们需要一个统计工具，用于统计静态网页的访问量
 - 不少人的浏览器会安装ublock、adblock等插件，导致一众统计服务无法统计到访问量
 
-# Plausible
+## Plausible
 
 [Plausible](https://plausible.io/)是一个开源的统计工具，可以用于统计静态网页的访问量，它的特点是：
 
@@ -26,11 +26,11 @@ tags:
 
 本文基于docker-compose部署Plausible，使用的是官方提供的docker镜像，部署中去除了email相关的内容。
 
-# 环境要求
+## 环境要求
 
 - docker-compose：安装参考[官方文档](https://docs.docker.com/compose/install/)
 
-# 部署教程
+## 部署教程
 
 ```shell
 git clone https://github.com/plausible/hosting
@@ -39,7 +39,7 @@ cd hosting
 vim docker-compose.yml
 ```
 
-## 配置文件
+### 配置文件
 
 ```yml
 version: "3.3"

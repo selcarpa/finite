@@ -13,11 +13,11 @@ tags:
 - kotlin-native
 ---
 
-# 介绍
+## 介绍
 
 在进行kotlin-native开发时，由于当前版本缺少很多库，所以我们需要使用C/C++进行补充。本文将以linux平台为例，介绍如何在kotlin-native中使用C/C++。
 
-# 准备工作
+## 准备工作
 
 - idea-community
 - jdk17
@@ -25,17 +25,17 @@ tags:
 - linux
 
 
-# 参考
+## 参考
 
 [Interoperability with C](https://kotlinlang.org/docs/native-c-interop.html)
 
 [Create an app using C Interop and libcurl – tutorial](https://kotlinlang.org/docs/native-app-with-c-and-libcurl.html)
 
-# 项目地址
+## 项目地址
 
 [selcarpa/c_link_demo](https://github.com/selcarpa/c_link_demo)
 
-# 项目结构
+## 项目结构
 
 ```
 └── c_link_demo
@@ -63,13 +63,13 @@ tags:
                     └── c_lib_demo.def
 ```
 
-# 步骤
+## 步骤
 
-## 创建C/C++库
+### 创建C/C++库
 
 此处以C库为例
 
-### 创建C库
+#### 创建C库
 
 在c_link_demo_c目录下创建library.c和library.h文件，文件分别声明和实现一个hello函数。
 
@@ -107,7 +107,7 @@ set(CMAKE_C_STANDARD 11)
 add_library(c_link_demo_c STATIC library.c)
 ```
 
-## 创建kotlin-native项目
+### 创建kotlin-native项目
 
 使用idea创建普通的kotlin(gradle)项目，然后打开项目根目录下的build.gradle.kts文件，更改为以下内容：
 
@@ -154,7 +154,7 @@ kotlin {
 
 然后可以调试kotlin原生应用。但是此处并没有进行C的交互链接，后续的步骤会进行C交互的补充。
 
-## 创建C/C++交互配置文件
+### 创建C/C++交互配置文件
 
 在项目根目录下创建nativeInterop/cinterop/c_lib_demo.def文件，内容如下：
 
@@ -167,7 +167,7 @@ staticLibraries = libc_link_demo_c.a
 libraryPaths = /home/sel/repository/selcarpa/c_link_demo/c_link_demo_c/cmake-build-debug
 ```
 
-## 更改构建脚本
+### 更改构建脚本
 
 在项目根目录下的build.gradle.kts文件中的linuxX64方法下，添加以下内容：
 
@@ -180,7 +180,7 @@ compilations["main"].cinterops {
 点击构建按钮，在idea的External Libraries中可以看到c_lib_demo的库文件已经被加载进来了。
 ![External Libraries](images/128376.png)
 
-## 调用C函数
+### 调用C函数
 
 在commonMain目录下的main.kt文件中调用C函数，内容如下：
 
@@ -200,7 +200,7 @@ fun main(args: Array<String>) {
 ![输出结果](images/1233245.png)
 
 
-## 补充说明
+### 补充说明
 
 c_lib_demo.def还有其他的配置方法，例：
 

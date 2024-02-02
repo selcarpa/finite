@@ -1,7 +1,7 @@
 ---
 categories:
 - docs
-title: "用Netty实现Trojan（一）"
+title: 用Netty实现Trojan（一）
 date: 2023-08-25T09:48:31+08:00
 tags:
 - Netty
@@ -11,8 +11,6 @@ tags:
 - trojan
 draft: false
 ---
-
-# 用Netty实现Trojan（一）
 
 ## 完整代码
 

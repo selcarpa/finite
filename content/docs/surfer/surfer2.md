@@ -1,7 +1,7 @@
 ---
 categories:
 - docs
-title: 用Netty实现Trojan（二）"
+title: 用Netty实现Trojan（二）
 date: 2023-08-25T09:49:07+08:00
 tags:
 - Netty
@@ -13,7 +13,6 @@ tags:
 draft: false
 ---
 
-# 用Netty实现Trojan（二）
 
 本节主要是介绍如何实现一个允许tcp通过的socks代理服务器，大部分携带网络功能的客户端，如curl、wget、浏览器等，在请求的时候，可以通过环境变量或者设置的形式，使这些客户端通过代理进行请求，以下是一个简单的例子：
 
