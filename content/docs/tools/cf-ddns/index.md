@@ -3,13 +3,19 @@ categories:
 - tools
 title: "使用cloudflare的api实现ddns"
 date: 2023-09-11T17:18:08+08:00
+lastmod: 2024-03-27T09:26:00+08:00
 draft: false
 tags:
 - ddns
 - cloudflare
 - cloudflare-ddns
+toc:
+  enable: true
+  sidebar: right
+  keepStatic: false
 ---
 
+## [极简开始方式已更新，请点击移步](cf-ddns-super-quick-start)
 
 ## 介绍
 
