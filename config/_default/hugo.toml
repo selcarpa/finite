@@ -77,7 +77,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     identifier = "github"
     pre = "<i class='fab fa-github fa-fw'></i>"
     post = ""
-    url = "https://github.com/selcarpa/nnt"
+    url = "https://github.com/selcarpa/finit"
     title = "GitHub"
     weight = 9
 
@@ -85,7 +85,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # 网站默认主题样式 ["auto", "light", "dark"]
   defaultTheme = "auto"
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
-  gitRepo = "https://github.com/selcarpa/nnt"
+  gitRepo = "https://github.com/selcarpa/finit"
   #  哪种哈希函数用来 SRI, 为空时表示不使用 SRI
   # ["sha256", "sha384", "sha512", "md5"]
   fingerprint = ""
@@ -323,7 +323,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # 是否使用目录
       enable = true
       #  是否保持使用文章前面的静态目录
-      keepStatic = false
+      keepStatic = true
       # 是否使侧边目录自动折叠展开
       auto = true
     #  代码配置
@@ -525,9 +525,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     enable = true
     [params.analytics.cloudflare]
       token = "27987b0a6e2c4a19b745963e0c5250ad"
-    [params.analytics.plausible]
-      data_domain = "finite.tain.one"
-      src = "https://anapla.beyond.tain.one/js/script.js"
+    # [params.analytics.plausible]
+    #   data_domain = "finite.tain.one"
+    #   src = "https://anapla.beyond.tain.one/js/script.js"
 
   #  Cookie 许可配置
   [params.cookieconsent]
