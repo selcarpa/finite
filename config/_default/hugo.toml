@@ -326,11 +326,11 @@ shortname = ""
 # Gitalk 评论系统设置
 [params.page.comment.gitalk]
 #
-enable = true
-owner = "selcarpa"
-repo = "finite"
-clientId = "ad795cf92d05272f3f4b"
-clientSecret = "c658bb3673bf00807ea42ec6ab66ac77c234bd71"
+enable = false
+owner = ""
+repo = ""
+clientId = ""
+clientSecret = ""
 # Valine 评论系统设置
 [params.page.comment.valine]
 enable = false
@@ -386,13 +386,13 @@ darkTheme = "github-dark"
 # giscus comment 评论系统设置 (https://giscus.app/zh-CN)
 [params.page.comment.giscus]
 # 你可以参考官方文档来使用下列配置
-enable = false
-repo = ""
-repoId = ""
-category = "Announcements"
-categoryId = ""
+enable = true
+repo = "selcarpa/finite"
+repoId = "R_kgDOKDNFFQ"
+category = "General"
+categoryId = "DIC_kwDOKDNFFc4CeUNE"
 # 为空时自动适配当前主题 i18n 配置
-lang = ""
+lang = "zh-CN"
 mapping = "pathname"
 reactionsEnabled = "1"
 emitMetadata = "0"
