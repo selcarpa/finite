@@ -3,6 +3,7 @@ categories:
   - tools
 title: "快速开始cloudflare ddns"
 date: 2024-03-27T09:26:00+08:00
+lastmod: 2024-03-31T11:00:00+08:00
 draft: false
 tags:
   - ddns
