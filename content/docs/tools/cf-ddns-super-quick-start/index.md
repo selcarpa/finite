@@ -48,6 +48,66 @@ tags:
 
 ## 快速开始
 
+### Windows x64
+
+#### 基础使用方式
+
+1. 从[下载页](https://github.com/selcarpa/cloudflare-ddns/releases/latest)下载cf-ddns-windows-x64-(version)-RELEASE.exe，更名为cf-ddns.exe
+2. 将cf-ddns.exe放到一个目录，例如C:\Users\[UserName]\cf-ddns，[UserName]替换为你的用户名
+3. 进入到cf-ddns所在目录，打开终端，执行命令，这行命令将开始进行300秒一次的ip检查，一旦ip变化，将会更新cloudflare的域名解析
+    ```shell
+    cf-ddns.exe -gen -zoneId=<替换为上文的zoneId> -authKey=<替换为上文的token> -domain=<替换为想使用的域名> -v4=<true: 开启ipv4, false: 关闭ipv4> -v6=<true: 开启ipv6, false: 关闭ipv6>
+    ```
+
+#### 配合[winsw](https://github.com/winsw/winsw)，创建windows服务使用
+
+上文的基础使用方式，需要一直保持终端开启，如果关机或者终端关闭，将无法继续更新域名解析。这里我们可以使用winsw将cf-ddns.exe包装成windows服务。
+winsw是一个开源的windows服务包装器，可以将任意可执行文件包装成windows服务，官方文档请参考[这里](https://github.com/winsw/winsw#get-started)。
+
+1. 从[下载页](https://github.com/selcarpa/cloudflare-ddns/releases/latest)下载cf-ddns-windows-x64-(version)-RELEASE.exe，更名为cf-ddns.exe
+2. 将cf-ddns.exe放到一个目录，例如C:\Users\[UserName]\cf-ddns，[UserName]替换为你的用户名，注意后续的内容中，这个目录将会多次出现
+3. 从[winsw](https://github.com/winsw/winsw/releases/tag/v2.12.0)下载[winsw-2.12.0-bin.exe](https://github.com/winsw/winsw/releases/download/v2.12.0/WinSW-x64.exe)
+4. 在cf-ddns所在目录，创建一个xml文件，例如cf-ddns-service.xml
+    ```xml
+    <service>
+        <id>cf-ddns</id>
+        <name>cf-ddns</name>
+        <description>cloudflare ddns</description>
+        <workingdirectory>C:\Users\[UserName]\cf-ddns</workingdirectory>
+        <executable>C:\Users\[UserName]\cf-ddns</executable>
+        <startarguments>-gen -zoneId=<替换为上文的zoneId> -authKey=<替换为上文的token> -domain=<替换为想使用的域名> -v4=<true: 开启ipv4, false: 关闭ipv4> -v6=<true: 开启ipv6, false: 关闭ipv6></startarguments>
+        <onfailure action="restart" delay="10 sec"/>
+    </service>
+    ```
+5. 将WinSW-x64.exe重命名为cf-ddns-service.exe，完成后的目录结构如下
+    ```shell
+    C:\Users\[UserName]\cf-ddns
+    ├── cf-ddns.exe
+    ├── cf-ddns-service.xml
+    ├── cf-ddns-service.exe
+    ```
+6. 打开终端，执行命令，安装服务
+    ```shell
+    cf-ddns-service.exe install cf-ddns-service.xml
+    ```
+7. 启动服务
+    ```shell
+    cf-ddns-service.exe start cf-ddns-service.xml
+    ```
+8. 查看服务状态
+    ```shell
+    cf-ddns-service.exe status cf-ddns-service.xml
+    ```
+9. 卸载服务
+    ```shell
+    cf-ddns-service.exe uninstall cf-ddns-service.xml
+    ```
+
+完成后，cf-ddns将会以windows服务的方式运行，即使关机或者终端关闭，也会继续更新域名解析。
+在Windows的服务管理器中，可以看到cf-ddns服务。
+![服务详细内容](images/412412.png)
+
+
 ### Linux x64
 
 #### 基础使用方式
@@ -55,7 +115,7 @@ tags:
 1. 从[下载页](https://github.com/selcarpa/cloudflare-ddns/releases/latest)下载cf-ddns-linux-x64-(version)-RELEASE.kexe
 2. 将下载的文件重命名为cf-ddns，并且给予运行权限
     ```shell
-        mv cf-ddns-linux-x64-(version)-RELEASE.kexe
+        mv cf-ddns-linux-x64-(version)-RELEASE.kexe cf-ddns && chmod +x cf-ddns
      ```
 3. 将cf-ddns.kexe放到一个目录，例如/usr/local/bin
     ```shell
@@ -71,7 +131,7 @@ tags:
 1. 从[下载页](https://github.com/selcarpa/cloudflare-ddns/releases/latest)下载cf-ddns-linux-x64-(version)-RELEASE.kexe
 2. 将下载的文件重命名为cf-ddns，并且给予运行权限
     ```shell
-        mv cf-ddns-linux-x64-(version)-RELEASE.kexe
+        mv cf-ddns-linux-x64-(version)-RELEASE.kexe cf-ddns && chmod +x cf-ddns
      ```
 3. 将cf-ddns.kexe放到一个目录，例如/usr/local/bin
     ```shell
@@ -110,7 +170,7 @@ tags:
 1. 从[下载页](https://github.com/selcarpa/cloudflare-ddns/releases/latest)下载cf-ddns-linux-x64-(version)-RELEASE.kexe
 2. 将下载的文件重命名为cf-ddns，并且给予运行权限
     ```shell
-        mv cf-ddns-linux-x64-(version)-RELEASE.kexe
+        mv cf-ddns-linux-x64-(version)-RELEASE.kexe cf-ddns && chmod +x cf-ddns
      ```
 3. 将cf-ddns.kexe放到一个目录，例如/usr/local/bin
     ```shell
