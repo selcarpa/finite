@@ -183,7 +183,7 @@ winsw是一个开源的windows服务包装器，可以将任意可执行文件�
     ```
 5. 添加一行
     ```shell
-    */5 * * * * /usr/local/bin/cf-ddns -gen -zoneId=<替换为上文的zoneId> -authKey=<替换为上文的token> -domain=<替换为想使用的域名> -v4=<true: 开启ipv4, false: 关闭ipv4> -v6=<true: 开启ipv6, false: 关闭ipv6>
+    */5 * * * * /usr/local/bin/cf-ddns -gen -zoneId=<替换为上文的zoneId> -authKey=<替换为上文的token> -domain=<替换为想使用的域名> -v4=<true: 开启ipv4, false: 关闭ipv4> -v6=<true: 开启ipv6, false: 关闭ipv6> -once
     ```
 
 
