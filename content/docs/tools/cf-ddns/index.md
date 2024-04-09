@@ -15,7 +15,7 @@ toc:
   keepStatic: false
 ---
 
-## [极简开始方式已更新，请点击移步](cf-ddns-super-quick-start)
+## [极简开始方式已更新，请点击移步](../cf-ddns-super-quick-start)
 
 ## 介绍
 
