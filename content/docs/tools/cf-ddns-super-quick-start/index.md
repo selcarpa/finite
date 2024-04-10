@@ -3,7 +3,7 @@ categories:
   - tools
 title: "快速开始cloudflare ddns"
 date: 2024-03-27T09:26:00+08:00
-lastmod: 2024-03-31T11:00:00+08:00
+lastmod: 2024-04-10T13:00:00+08:00
 draft: false
 tags:
   - ddns
@@ -210,8 +210,5 @@ services:
     container_name: cf-ddns
     restart: unless-stopped # 开机自启
     command:
-      -gen -zoneId=<替换为上文的zoneId> -authKey=<替换为上文的token> -domain=<替换为想使用的域名> -v4=<true:
-        开启ipv4, false:
-          关闭ipv4> -v6=<true:
-            开启ipv6, false: 关闭ipv6>
+      -gen -zoneId=<替换为上文的zoneId> -authKey=<替换为上文的token> -domain=<替换为想使用的域名> -v4=<true:开启ipv4, false: 关闭ipv4> -v6=<true: 开启ipv6, false: 关 闭ipv6>
 ```
