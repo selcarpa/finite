@@ -387,17 +387,15 @@ darkTheme = "github-dark"
 [params.page.comment.giscus]
 # 你可以参考官方文档来使用下列配置
 enable = true
-repo = "selcarpa/finite"
-repoId = "R_kgDOKDNFFQ"
-category = "Announcements"
-categoryId = "DIC_kwDOKDNFFc4CeUNE"
-# 为空时自动适配当前主题 i18n 配置
-lang = "zh-CN"
-mapping = "pathname"
-reactionsEnabled = "1"
-emitMetadata = "0"
-inputPosition = "bottom"
-lazyLoading = false
+dataRepo = "selcarpa/finite"
+dataRepoId = "R_kgDOKDNFFQ"
+dataCategory = "Announcements"
+dataCategoryId = "DIC_kwDOKDNFFc4CeUNE"
+dataLang = "zh-CN"
+dataMapping = "pathname"
+dataReactionsEnabled = "1"
+dataEmitMetadata = "0"
+dataInputPosition = "bottom"
 lightTheme = "light"
 darkTheme = "dark"
 #  第三方库配置
