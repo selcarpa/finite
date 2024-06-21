@@ -389,7 +389,7 @@ darkTheme = "github-dark"
 enable = true
 repo = "selcarpa/finite"
 repoId = "R_kgDOKDNFFQ"
-category = "General"
+category = "Announcements"
 categoryId = "DIC_kwDOKDNFFc4CeUNE"
 # 为空时自动适配当前主题 i18n 配置
 lang = "zh-CN"
@@ -452,9 +452,9 @@ thumbnailUrl = ""
 enable = true
 [params.analytics.cloudflare]
 token = "27987b0a6e2c4a19b745963e0c5250ad"
-[params.analytics.plausible]
-  data_domain = "finite.tain.one"
-  src = "https://anapla.beyond.tain.one/js/script.js"
+# [params.analytics.plausible]
+#   data_domain = "finite.tain.one"
+#   src = "https://anapla.beyond.tain.one/js/script.js"
 
 #  Cookie 许可配置
 [params.cookieconsent]
