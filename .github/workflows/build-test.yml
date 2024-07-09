@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
+    env:
+      HUGO_VERSION: 0.124.0
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
