@@ -14,7 +14,7 @@ languageName = "简体中文"
 hasCJKLanguage = true
 
 # 默认每页列表显示的文章数目
-paginate = 12
+pagination.pagerSize = 12
 # 谷歌分析代号 [UA-XXXXXXXX-X]
 # googleAnalytics = ""
 # 版权描述，仅仅用于 SEO
@@ -31,7 +31,7 @@ enableEmoji = true
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 # 作者配置
-[author]
+[params.author]
 name = "selcarpa"
 email = "selcarpa@gmail.com"
 link = "https://finite.tain.one/"
@@ -195,7 +195,7 @@ ruby = true
 #  是否使用 fraction 扩展语法
 fraction = true
 #  是否使用 fontawesome 扩展语法
-fontawesome = true
+fontawesome = false
 # 是否在文章页面显示原始 Markdown 文档链接
 linkToMarkdown = true
 #  是否在 RSS 中显示全文内容
@@ -479,7 +479,7 @@ posts = ":filename"
 #  Google Analytics 相关隐私 (被 params.analytics.google 替代)
 [privacy.googleAnalytics]
 # ...
-[privacy.twitter]
+[privacy.x]
 enableDNT = true
 [privacy.youtube]
 privacyEnhanced = true
