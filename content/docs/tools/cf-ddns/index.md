@@ -11,7 +11,6 @@ tags:
 - cloudflare-ddns
 toc:
   enable: true
-  sidebar: right
   keepStatic: false
 ---
 
