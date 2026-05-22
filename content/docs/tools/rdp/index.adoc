@@ -9,6 +9,9 @@ tags:
   - cloudflare
   - cloudflare-ddns
   - remote-desktop
+toc:
+  enable: true
+  keepStatic: false
 ---
 
 == 介绍

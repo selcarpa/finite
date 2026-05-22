@@ -8,6 +8,9 @@ tags:
 - wsl
 - wslg
 - Jetbrains
+toc:
+  enable: true
+  keepStatic: false
 ---
 
 ## 缘由

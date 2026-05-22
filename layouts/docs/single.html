@@ -8,6 +8,8 @@
     {{- $toc = .Site.Params.page.toc | default dict -}}
     {{- else if eq $toc false -}}
     {{- $toc = dict "enable" false -}}
+    {{- else if $toc -}}
+    {{- $toc = merge (.Site.Params.page.toc | default dict) $toc -}}
     {{- end -}}
     
     

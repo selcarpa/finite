@@ -9,6 +9,9 @@ tags:
   - ddns
   - cloudflare
   - cloudflare-ddns
+toc:
+  enable: true
+  keepStatic: false
 ---
 
 ## 介绍
@@ -33,11 +36,11 @@ tags:
 6. 客户端IP（可选），这个用于区别调用客户端的白名单，由于本文讲解ddns，本身访问的公网IP就是动态的，所以这里最好不要填写
 7. TTL，定义此令牌将保持活动状态的时间长度。这个不需要填写
 
-![创建令牌](../cf-ddns/images/000134.png "创建令牌")
+![创建令牌](images/000134.png "创建令牌")
 
 完成后点击创建令牌，并拷贝token
 
-![创建令牌](../cf-ddns/images/000303.png "拷贝token")
+![创建令牌](images/000303.png "拷贝token")
 
 ### 3. 获取zone id
 
@@ -45,7 +48,7 @@ tags:
 2. 选择需要用于ddns的域名
 3. 页面右下角即可看到zone id
 
-![获取zone id](../cf-ddns/images/000532.png "获取zone id")
+![获取zone id](images/000532.png "获取zone id")
 
 ## 快速开始
 

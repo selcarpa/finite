@@ -7,6 +7,9 @@ draft: false
 tags:
 - web analytics
 - tools
+toc:
+  enable: true
+  keepStatic: false
 ---
 
 ## 背景
