@@ -1,0 +1,32 @@
+[[main]]
+weight = 1
+identifier = "docs"
+name = "Docs"
+url = "/docs/"
+[[main]]
+weight = 2
+identifier = "friends"
+name = "Friends"
+url = "/docs/friends_link/"
+[[main]]
+weight = 3
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+[[main]]
+weight = 4
+identifier = "categories"
+name = "Categories"
+url = "/categories/"
+[[main]]
+weight = 5
+identifier = "static"
+url = "https://anapla.beyond.tain.one/finite.tain.one"
+name = "Analytics"
+title = "Analytics"
+[[main]]
+identifier = "github"
+pre = "<i class='fab fa-github fa-fw'></i>"
+url = "https://github.com/selcarpa/finite"
+title = "GitHub"
+weight = 9

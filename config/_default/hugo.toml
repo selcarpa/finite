@@ -1,17 +1,9 @@
 baseURL = "https://finite.tain.one/"
 
+defaultContentLanguage = "en"
+
 # 更改使用 Hugo 构建网站时使用的默认主题
 theme = "DoIt"
-
-# 网站标题
-title = "今日无新鲜事"
-
-# 网站语言, 仅在这里 CN 大写 ["en", "zh-CN", "fr", "pl", ...]
-languageCode = "zh-CN"
-# 语言名称 ["English", "简体中文", "Français", "Polski", ...]
-languageName = "简体中文"
-# 是否包括中日韩文字
-hasCJKLanguage = true
 
 # 默认每页列表显示的文章数目
 pagination.pagerSize = 12
@@ -46,10 +38,6 @@ gitRepo = "https://github.com/selcarpa/finite"
 fingerprint = ""
 #  日期格式
 dateFormat = "2006-01-02"
-# 网站标题, 用于 Open Graph 和 Twitter Cards
-title = "今日无新鲜事"
-# 网站描述, 用于 RSS, SEO, Open Graph 和 Twitter Cards
-description = "今日无新鲜事"
 # 网站图片, 用于 Open Graph 和 Twitter Cards
 images = ["/logo.png"]
 
@@ -63,8 +51,6 @@ mobileMode = "auto"
 [params.header.title]
 # LOGO 的 URL
 logo = ""
-# 标题名称
-name = "今日无新鲜事"
 # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
 pre = ""
 # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
@@ -110,8 +96,6 @@ rss = 10
 
 #  应用图标配置
 [params.app]
-# 当添加到 iOS 主屏幕或者 Android 启动器时的标题, 覆盖默认标题
-title = "今日无新鲜事"
 # 是否隐藏网站图标资源链接
 noFavicon = false
 # 更现代的 SVG 网站图标, 可替代旧的 .png 和 .ico 文件
@@ -159,7 +143,6 @@ avatarURL = "https://avatars.githubusercontent.com/u/25505798?v=4"
 #  主页显示的网站标题 (支持 HTML 格式)
 title = ""
 # 主页显示的网站副标题 (允许 HTML 格式)
-subtitle = '<text style="color: gold">束缚于果壳之中，我仍自认为无限空间之王。</text>'
 # 是否为副标题显示打字机动画
 typeit = true
 # 是否显示社交账号
@@ -346,7 +329,6 @@ dataRepo = "selcarpa/finite"
 dataRepoId = "R_kgDOKDNFFQ"
 dataCategory = "Announcements"
 dataCategoryId = "DIC_kwDOKDNFFc4CeUND"
-dataLang = "zh-CN"
 dataMapping = "pathname"
 dataReactionsEnabled = "1"
 dataEmitMetadata = "0"
@@ -417,6 +399,10 @@ enable = true
 message = ""
 dismiss = ""
 link = ""
+[params.cookieconsent.palette.popup]
+background = "#ffffff"
+[params.cookieconsent.palette.button]
+background = "#f6f8fa"
 
 #  第三方库文件的 CDN 设置
 [params.cdn]

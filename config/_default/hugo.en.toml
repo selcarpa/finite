@@ -1,0 +1,21 @@
+weight = 1
+locale = "en"
+label = "English"
+hasCJKLanguage = false
+title = "Nothing New Today"
+
+[params]
+title = "Nothing New Today"
+description = "Nothing New Today"
+
+[params.header.title]
+name = "Nothing New Today"
+
+[params.app]
+title = "Nothing New Today"
+
+[params.home.profile]
+subtitle = '<text style="color: gold"> confined in a nutshell, I still consider myself the king of infinite space. </text>'
+
+[params.page.comment.giscus]
+dataLang = "en"
