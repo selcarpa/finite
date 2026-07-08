@@ -1,6 +1,7 @@
 ---
 title: "How to Use reportlab's TTFont Font Fallback"
-date: 2026-04-23T10:00:00+08:00
+date: 2026-06-09T10:00:00+08:00
+lastmod: 2026-06-09T10:00:00+08:00
 authors: ["selcarpa"]
 description: "How to configure TTFont font fallback in reportlab_enhanced for automatic font switching in multilingual text"
 categories:
@@ -28,24 +29,15 @@ toc:
 
 [reportlab_enhanced](https://github.com/selcarpa/reportlab_enhanced) is a fork of [reportlab](https://www.reportlab.com/) that enhances font capabilities on top of the upstream. TTFont font fallback is one of its core improvements.
 
-In the original reportlab, TTFont has always lacked a font fallback mechanism. When processing multilingual text (e.g., Latin + Chinese, Japanese, etc.), if the main font lacks glyphs for certain characters, the rendering is poor—displaying tofu boxes at best, or missing content at worst. reportlab_enhanced adds Type1-level fallback support for TTFont by setting the environment variable `REPORTLAB_FONT_FALLBACK=1`.
+In the original reportlab, TTFont has always lacked a font fallback mechanism. When processing multilingual text (e.g., Latin + Chinese, Japanese, etc.), if the main font lacks glyphs for certain characters, the rendering is poor—displaying tofu boxes at best, or missing content at worst. reportlab_enhanced adds Type1-level fallback support for TTFont, which is enabled by default starting from version **0.1.0**.
 
 This article explains how to use this feature. For implementation details, see [reportlab TTFont Font Fallback Implementation Analysis](/docs/reportlab-ttfont-fallback-impl/).
 
 ## Enabling the Feature
 
-The feature is off by default and requires an environment variable:
+Starting with **reportlab_enhanced 0.1.0**, TTFont font fallback is enabled by default and requires no manual configuration.
 
-```bash
-REPORTLAB_FONT_FALLBACK=1 python your_script.py
-```
-
-Or set it at the start of your script:
-
-```python
-import os
-os.environ['REPORTLAB_FONT_FALLBACK'] = '1'
-```
+> For earlier versions, set the environment variable `REPORTLAB_FONT_FALLBACK=1` to enable this feature.
 
 ## Basic Usage: Per-Font Configuration
 
@@ -155,15 +147,12 @@ Note: Explicitly specify the font name (configured with fallback) in the style o
 
 ## Notes
 
-1. **Feature from reportlab_enhanced** — This is a font enhancement from reportlab_enhanced on top of upstream reportlab. Disabled by default; requires `REPORTLAB_FONT_FALLBACK=1`.
+1. **Feature from reportlab_enhanced** — This is a font enhancement from reportlab_enhanced on top of upstream reportlab. Enabled by default starting from version 0.1.0.
 2. **Performance cost** — Each text rendering checks the fallback chain for glyphs missing from the primary font. May impact performance with large text volumes.
 
 ## Complete Example
 
 ```python
-import os
-os.environ['REPORTLAB_FONT_FALLBACK'] = '1'
-
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont

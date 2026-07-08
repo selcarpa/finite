@@ -1,6 +1,7 @@
 ---
 title: "如何使用reportlab的TTFont字体回退功能"
-date: 2026-04-23T10:00:00+08:00
+date: 2026-06-09T10:00:00+08:00
+lastmod: 2026-06-09T10:00:00+08:00
 draft: false
 authors: ["selcarpa"]
 description: "介绍如何在reportlab_enhanced中配置TTFont字体回退，实现多语言混合文本的自动字体切换"
@@ -29,24 +30,15 @@ toc:
 
 [reportlab_enhanced](https://github.com/selcarpa/reportlab_enhanced) 是 [reportlab](https://www.reportlab.com/) 的 fork 分支，在上游基础上进行字体功能增强。TTFont 字体回退即为其中一项核心改进。
 
-在原生 reportlab 中，TTFont 一直缺少字体回退机制。这导致处理多语言混合文本（如拉丁字母 + 中文、日文等）时，如果主字体缺少某些字符的字形，显示效果会非常糟糕——轻则方块，重则缺失。reportlab_enhanced 通过设置环境变量 `REPORTLAB_FONT_FALLBACK=1`，为 TTFont 添加了与 Type1 字体同等能力的 fallback 支持。
+在原生 reportlab 中，TTFont 一直缺少字体回退机制。这导致处理多语言混合文本（如拉丁字母 + 中文、日文等）时，如果主字体缺少某些字符的字形，显示效果会非常糟糕——轻则方块，重则缺失。reportlab_enhanced 为 TTFont 添加了与 Type1 字体同等能力的 fallback 支持，自 0.1.0 版本起默认启用。
 
 本文介绍如何使用这一功能。实现原理请参考 [reportlab TTFont字体回退实现解析](/docs/reportlab-ttfont-fallback-impl/)。
 
 ## 启用功能
 
-必须设置环境变量才能启用，默认关闭：
+自 **reportlab_enhanced 0.1.0** 版本起，TTFont 字体回退功能已默认启用，无需手动配置。
 
-```bash
-REPORTLAB_FONT_FALLBACK=1 python your_script.py
-```
-
-或在脚本开头设置：
-
-```python
-import os
-os.environ['REPORTLAB_FONT_FALLBACK'] = '1'
-```
+> 若使用更早版本，需设置环境变量 `REPORTLAB_FONT_FALLBACK=1` 才能启用此功能。
 
 ## 基础用法：逐行配置
 
@@ -157,15 +149,12 @@ doc.build(story)
 
 ## 注意事项
 
-1. **功能来自 reportlab_enhanced** — 这是 reportlab_enhanced 对上游 reportlab 的字体增强，默认关闭，需要设置 `REPORTLAB_FONT_FALLBACK=1` 环境变量才生效
+1. **功能来自 reportlab_enhanced** — 这是 reportlab_enhanced 对上游 reportlab 的字体增强，自 0.1.0 版本起默认启用
 2. **性能开销** — 每次文本渲染时，若主字体缺失某字符，会依次查询 fallback 链的字形表，文本量较大时有一定性能影响
 
 ## 完整示例
 
 ```python
-import os
-os.environ['REPORTLAB_FONT_FALLBACK'] = '1'
-
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
